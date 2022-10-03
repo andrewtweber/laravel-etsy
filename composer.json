@@ -14,8 +14,27 @@
             "homepage": "https://andrew.cool"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/andrewtweber/proste-sdk.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/andrewtweber/slimak.git"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org"
+        },
+        {
+            "packagist": false
+        }
+    ],
     "require": {
         "php": "^8.1",
+        "andrewtweber/proste-sdk": "dev-master",
+        "andrewtweber/slimak": "dev-master",
         "laravel/framework": "^8.12|^9.0",
         "nesbot/carbon": "^2.60"
     },

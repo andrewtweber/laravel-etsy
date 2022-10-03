@@ -6,9 +6,8 @@ use Carbon\Carbon;
 use Etsy\Enums\ShopStatus;
 use Etsy\Pivots\FavoriteShop;
 use Etsy\Pivots\FavoriteShopItem;
-use Etsy\Services\Etsy;
+use Etsy\Etsy;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\HtmlString;
 use Proste\Exceptions\Http404NotFoundException;
 use Proste\Exceptions\HttpException;
+use Slimak\SluggedModel;
 
 /**
  * Class Shop
@@ -51,7 +51,7 @@ use Proste\Exceptions\HttpException;
  * @property Collection|User[]             favoritedByUsers
  * @property Collection|FavoriteShopItem[] favoritedItems
  */
-class Shop extends Model
+class Shop extends SluggedModel
 {
     use SoftDeletes;
 

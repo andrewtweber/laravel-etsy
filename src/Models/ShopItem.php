@@ -2,18 +2,12 @@
 
 namespace Etsy\Models;
 
-use App\Services\Etsy;
 use App\Services\ProcessPhoto;
-use App\Support\Breadcrumb;
-use App\Support\MetaObject;
-use App\Support\Pivots\FavoriteShopItem;
-use App\Support\Pivots\WishlistItem;
-use App\Support\Traits\ElasticquentEntity;
-use App\Support\Traits\HasMetaTags;
+use Etsy\Etsy;
+use Etsy\Pivots\FavoriteShopItem;
+use Etsy\Pivots\WishlistItem;
 use Carbon\Carbon;
-use Elasticquent\ElasticquentInterface;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
+use Slimak\SluggedModel;
 
 /**
  * Class ShopItem
@@ -54,7 +49,7 @@ use Illuminate\Support\Str;
  * @property Collection|ShopItemStats[] stats
  * @property Collection|User[]          favoritedByUsers
  */
-class ShopItem extends Model
+class ShopItem extends SluggedModel
 {
     use SoftDeletes;
 
@@ -70,10 +65,6 @@ class ShopItem extends Model
         'etsy_id',
         'weight',
     ];
-
-    protected $metaTitleBase = 'original_name';
-
-    protected $metaDescriptionBase = 'description';
 
     public $timestamps = true;
 
