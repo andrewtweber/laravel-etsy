@@ -21,7 +21,6 @@ use Slimak\SluggedModel;
  * @property string                    $primary_color
  * @property string                    $secondary_color
  *
- * @property string                    $full_name
  * @property string                    $url
  *
  * @property ShopCategory              parent

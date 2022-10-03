@@ -61,7 +61,6 @@ return [
     'models' => [
         'shop' => \App\Models\Shop::class,
     ],
-]
 ];
 ```
 
