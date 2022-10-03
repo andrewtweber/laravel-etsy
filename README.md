@@ -48,11 +48,20 @@ protected $commands = [
 
 protected function schedule(Schedule $schedule)
 {
+    // Recommend running this daily to sync shops and items
     $schedule->command('etsy:shops')->dailyAt('06:00');
-
-    $schedule->command('email:welcome')->dailyAt('11:00');
 }
 ```
+
+## Taxonomy
+
+This command probably only needs to be run once, or very rarely:
+
+```
+php artisan etsy:taxonomy
+```
+
+This will fetch all of Etsy's taxonomies which can then be mapped to your own custom categories.
 
 ## Extending Models
 
