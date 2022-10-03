@@ -2,6 +2,10 @@
 
 namespace Etsy;
 
+use Etsy\Models\Shop;
+use Etsy\Models\ShopItem;
+use Etsy\Observers\ShopItemObserver;
+use Etsy\Observers\ShopObserver;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
@@ -31,5 +35,14 @@ class EtsyServiceProvider extends ServiceProvider
         }
 
         $this->mergeConfigFrom($config, 'etsy');
+
+        $this->registerObservers();
+    }
+
+    protected function registerObservers()
+    {
+        // TODO: use config models here?
+        Shop::observe(ShopObserver::class);
+        ShopItem::observe(ShopItemObserver::class);
     }
 }

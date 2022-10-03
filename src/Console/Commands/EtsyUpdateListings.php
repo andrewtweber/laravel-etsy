@@ -32,7 +32,9 @@ class EtsyUpdateListings extends Command
      */
     public function handle()
     {
-        $shops = Shop::whereNotNull('etsy_id')->cursor();
+        $shop_class = config('etsy.models.shop');
+
+        $shops = $shop_class::whereNotNull('etsy_id')->cursor();
 
         foreach ($shops as $shop) {
             dispatch_with_delay(new GetShopListings($shop), 5, 5);

@@ -123,7 +123,7 @@ class Shop extends SluggedModel
     public function favoritedByUsers(): BelongsToMany
     {
         return $this->belongsToMany(config('etsy.models.user'), 'favorite_shops', 'shop_id', 'user_id')
-            ->using(FavoriteShop::class)
+            ->using(config('etsy.models.favorite_shop'))
             ->withPivot([
                 'favorited_at',
             ]);
@@ -134,17 +134,7 @@ class Shop extends SluggedModel
      */
     public function favoritedItems(): HasMany
     {
-        return $this->hasMany(FavoriteShopItem::class);
-    }
-
-    /**
-     * @return array
-     */
-    public function statsColumns(): array
-    {
-        return [
-            'shop_id' => $this->id,
-        ];
+        return $this->hasMany(config('etsy.models.favorite_item'));
     }
 
     /**
@@ -294,7 +284,9 @@ class Shop extends SluggedModel
             // If they ranked their featured items, otherwise just in the order they are retrieved
             $weight = $result['featured_rank'] === -1 ? $counter : $result['featured_rank'];
 
-            $item = ShopItem::withTrashed()->firstOrNew([
+            $item_class = config('etsy.models.shop_item');
+
+            $item = $item_class::withTrashed()->firstOrNew([
                 'shop_id' => $this->id,
                 'etsy_id' => $result['listing_id'],
             ]);

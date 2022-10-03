@@ -55,7 +55,7 @@ class Wishlist extends SluggedModel
     public function shopItems(): MorphToMany
     {
         return $this->morphedByMany(config('etsy.models.shop_item'), 'entity', 'wishlist_items')
-            ->using(WishlistItem::class)
+            ->using(config('etsy.models.wishlist_item'))
             ->withPivot([
                 'weight',
                 'added_at',

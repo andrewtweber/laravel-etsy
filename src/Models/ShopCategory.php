@@ -108,7 +108,9 @@ class ShopCategory extends SluggedModel
             'shops.photo',
         ]);
 
-        $shops = Shop::whereHas('items', function ($query) {
+        $shop_class = config('etsy.models.shop');
+
+        $shops = $shop_class::whereHas('items', function ($query) {
             $query->where('category_id', $this->id);
         })->get();
 
