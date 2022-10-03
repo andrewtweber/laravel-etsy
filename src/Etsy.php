@@ -28,8 +28,8 @@ class Etsy extends SDK
     {
         parent::__construct();
 
-        $this->key = config('services.etsy.key');
-        $this->secret = config('services.etsy.secret');
+        $this->key = config('etsy.api.key');
+        $this->secret = config('etsy.api.secret');
     }
 
     /**
