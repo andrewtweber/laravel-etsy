@@ -11,7 +11,7 @@ enum ThumbnailShape: string
 {
     use EnumValues;
 
-    public const Circle  = 'circle';
-    public const Square  = 'square';
-    public const Rounded = 'rounded';
+    case Circle  = 'circle';
+    case Square  = 'square';
+    case Rounded = 'rounded';
 }
