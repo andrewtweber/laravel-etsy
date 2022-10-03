@@ -1,0 +1,46 @@
+<?php
+
+namespace Etsy\Pivots;
+
+use Etsy\Models\Shop;
+//use Etsy\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+/**
+ * Class FavoriteShop
+ *
+ * @package Etsy\Pivots
+ *
+ * @property int    $shop_id
+ * @property int    $user_id
+ * @property Carbon $favorited_at
+ *
+ * @property User   user
+ * @property Shop   shop
+ */
+class FavoriteShop extends Pivot
+{
+    protected $table = 'favorite_shops';
+
+    public $timestamps = false;
+
+    protected $dates = ['favorited_at'];
+
+    /**
+     * @return BelongsTo
+     */
+//    public function user(): BelongsTo
+//    {
+//        return $this->belongsTo(User::class);
+//    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function shop(): BelongsTo
+    {
+        return $this->belongsTo(Shop::class);
+    }
+}

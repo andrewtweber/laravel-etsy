@@ -1,0 +1,46 @@
+{
+    "name": "andrewtweber/laravel-etsy",
+    "type": "library",
+    "description": "Etsy marketplace for Laravel",
+    "keywords": [
+        "laravel",
+        "etsy",
+        "marketplace"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Weber",
+            "homepage": "https://andrew.cool"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^8.12|^9.0",
+        "nesbot/carbon": "^2.60"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.17",
+        "phpunit/phpunit": "^9"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Etsy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Etsy\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Etsy\\EtsyServiceProvider"
+            ]
+        }
+    }
+}
