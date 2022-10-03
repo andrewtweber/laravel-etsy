@@ -41,10 +41,8 @@ class EtsyServiceProvider extends ServiceProvider
 
     protected function registerObservers()
     {
-        $shop_class = config('etsy.models.shop');
-        $item_class = config('etsy.models.item');
-
-        $shop_class::observe(ShopObserver::class);
-        $item_class::observe(ShopItemObserver::class);
+        // TODO: use config models here?
+        Shop::observe(ShopObserver::class);
+        ShopItem::observe(ShopItemObserver::class);
     }
 }
