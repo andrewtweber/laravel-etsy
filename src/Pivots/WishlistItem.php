@@ -41,7 +41,7 @@ class WishlistItem extends MorphPivot
      */
     public function wishlist(): BelongsTo
     {
-        return $this->belongsTo(Wishlist::class);
+        return $this->belongsTo(config('etsy.models.wishlist'));
     }
 
     /**

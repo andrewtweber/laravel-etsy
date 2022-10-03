@@ -46,7 +46,7 @@ class EtsyTaxonomy extends Model
      */
     public function shopCategory(): BelongsTo
     {
-        return $this->belongsTo(ShopCategory::class);
+        return $this->belongsTo(config('etsy.models.category'));
     }
 
     /**

@@ -36,7 +36,7 @@ class FavoriteShopItem extends Pivot
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.user.model'));
+        return $this->belongsTo(config('etsy.models.user'));
     }
 
     /**
@@ -44,7 +44,7 @@ class FavoriteShopItem extends Pivot
      */
     public function shop(): BelongsTo
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(config('etsy.models.shop'));
     }
 
     /**
@@ -52,6 +52,6 @@ class FavoriteShopItem extends Pivot
      */
     public function item(): BelongsTo
     {
-        return $this->belongsTo(ShopItem::class, 'shop_item_id');
+        return $this->belongsTo(config('etsy.models.shop_item'), 'shop_item_id');
     }
 }

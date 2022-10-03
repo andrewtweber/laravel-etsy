@@ -36,7 +36,7 @@ class ShopItemStats extends Model
      */
     public function shop(): BelongsTo
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(config('etsy.models.shop'));
     }
 
     /**
@@ -44,7 +44,7 @@ class ShopItemStats extends Model
      */
     public function item(): BelongsTo
     {
-        return $this->belongsTo(ShopItem::class, 'shop_item_id');
+        return $this->belongsTo(config('etsy.models.shop_item'), 'shop_item_id');
     }
 
     /**

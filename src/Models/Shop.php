@@ -82,7 +82,7 @@ class Shop extends SluggedModel
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.user.model'));
+        return $this->belongsTo(config('etsy.models.user'));
     }
 
     /**
@@ -90,7 +90,7 @@ class Shop extends SluggedModel
      */
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(ShopCategory::class, 'shop_category', 'shop_id', 'category_id');
+        return $this->belongsToMany(config('etsy.models.category'), 'shop_category', 'shop_id', 'category_id');
     }
 
     /**
@@ -98,7 +98,7 @@ class Shop extends SluggedModel
      */
     public function items(): HasMany
     {
-        return $this->hasMany(ShopItem::class);
+        return $this->hasMany(config('etsy.models.shop_item'));
     }
 
     /**
@@ -122,7 +122,7 @@ class Shop extends SluggedModel
      */
     public function favoritedByUsers(): BelongsToMany
     {
-        return $this->belongsToMany(config('etsy.user.model'), 'favorite_shops', 'shop_id', 'user_id')
+        return $this->belongsToMany(config('etsy.models.user'), 'favorite_shops', 'shop_id', 'user_id')
             ->using(FavoriteShop::class)
             ->withPivot([
                 'favorited_at',

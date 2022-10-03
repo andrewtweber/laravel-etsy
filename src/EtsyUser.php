@@ -27,7 +27,7 @@ trait EtsyUser
      */
     public function wishlists(): HasMany
     {
-        return $this->hasMany(Wishlist::class);
+        return $this->hasMany(config('etsy.models.wishlist'));
     }
 
     /**
@@ -35,7 +35,7 @@ trait EtsyUser
      */
     public function favoriteShops(): BelongsToMany
     {
-        return $this->belongsToMany(Shop::class, 'favorite_shops', 'user_id', 'shop_id')
+        return $this->belongsToMany(config('etsy.models.shop'), 'favorite_shops', 'user_id', 'shop_id')
             ->using(FavoriteShop::class)
             ->withPivot([
                 'favorited_at',
@@ -47,7 +47,7 @@ trait EtsyUser
      */
     public function favoriteShopItems(): BelongsToMany
     {
-        return $this->belongsToMany(ShopItem::class, 'favorite_shop_items', 'user_id', 'shop_item_id')
+        return $this->belongsToMany(config('etsy.models.shop_item'), 'favorite_shop_items', 'user_id', 'shop_item_id')
             ->using(FavoriteShopItem::class)
             ->withPivot([
                 'shop_id',

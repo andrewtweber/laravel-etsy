@@ -37,3 +37,30 @@ protected function schedule(Schedule $schedule)
     $schedule->command('email:welcome')->dailyAt('11:00');
 }
 ```
+
+## Extending
+
+If you need to extend any of the Etsy classes, you can do so and update the configuration
+to point to the new model.
+
+Sample model:
+
+```php
+namespace App\Models;
+
+class Shop extends \Etsy\Models\Shop implements HasCommentsInterface
+{
+    use HasComments;
+}
+```
+
+Config:
+
+```php
+return [
+    'models' => [
+        'shop' => \App\Models\Shop::class,
+    ],
+]
+];
+```

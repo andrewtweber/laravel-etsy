@@ -45,7 +45,7 @@ class ShopCategory extends SluggedModel
      */
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(ShopCategory::class);
+        return $this->belongsTo(static::class);
     }
 
     /**
@@ -53,7 +53,7 @@ class ShopCategory extends SluggedModel
      */
     public function children(): HasMany
     {
-        return $this->hasMany(ShopCategory::class, 'parent_id');
+        return $this->hasMany(static::class, 'parent_id');
     }
 
     /**
@@ -61,7 +61,7 @@ class ShopCategory extends SluggedModel
      */
     public function shops(): BelongsToMany
     {
-        return $this->belongsToMany(Shop::class, 'shop_category', 'category_id', 'shop_id');
+        return $this->belongsToMany(config('etsy.models.shop'), 'shop_category', 'category_id', 'shop_id');
     }
 
     /**
@@ -69,7 +69,7 @@ class ShopCategory extends SluggedModel
      */
     public function items(): HasMany
     {
-        return $this->hasMany(ShopItem::class, 'category_id');
+        return $this->hasMany(config('etsy.models.shop_item'), 'category_id');
     }
 
     /**

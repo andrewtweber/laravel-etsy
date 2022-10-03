@@ -76,7 +76,7 @@ class ShopItem extends SluggedModel
      */
     public function shop(): BelongsTo
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(config('etsy.models.shop'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ShopItem extends SluggedModel
      */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(ShopCategory::class, 'category_id');
+        return $this->belongsTo(config('etsy.models.category'), 'category_id');
     }
 
     /**
@@ -100,7 +100,7 @@ class ShopItem extends SluggedModel
      */
     public function wishlists(): MorphToMany
     {
-        return $this->morphToMany(Wishlist::class, 'entity', 'wishlist_items')
+        return $this->morphToMany(config('etsy.models.wishlist'), 'entity', 'wishlist_items')
             ->using(WishlistItem::class)
             ->withPivot([
                 'weight',
@@ -113,7 +113,7 @@ class ShopItem extends SluggedModel
      */
     public function favoritedByUsers(): BelongsToMany
     {
-        return $this->belongsToMany(config('etsy.user.model'), 'favorite_shop_items', 'shop_item_id', 'user_id')
+        return $this->belongsToMany(config('etsy.models.user'), 'favorite_shop_items', 'shop_item_id', 'user_id')
             ->using(FavoriteShopItem::class)
             ->withPivot([
                 'shop_id',

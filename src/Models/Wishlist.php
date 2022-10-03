@@ -46,7 +46,7 @@ class Wishlist extends SluggedModel
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.user.model'));
+        return $this->belongsTo(config('etsy.models.user'));
     }
 
     /**
@@ -54,7 +54,7 @@ class Wishlist extends SluggedModel
      */
     public function shopItems(): MorphToMany
     {
-        return $this->morphedByMany(ShopItem::class, 'entity', 'wishlist_items')
+        return $this->morphedByMany(config('etsy.models.shop_item'), 'entity', 'wishlist_items')
             ->using(WishlistItem::class)
             ->withPivot([
                 'weight',
