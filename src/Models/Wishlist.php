@@ -3,6 +3,7 @@
 namespace Etsy\Models;
 
 use Carbon\Carbon;
+use Etsy\EtsyUserInterface;
 use Etsy\Pivots\WishlistItem;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,19 +16,19 @@ use Slimak\SluggedModel;
  *
  * @package Etsy\Models
  *
- * @property int            $id
- * @property int            $user_id
- * @property string         $name
- * @property string         $slug
- * @property string         $description
- * @property Carbon         $created_at
- * @property Carbon         $updated_at
- * @property Carbon         $deleted_at
+ * @property int               $id
+ * @property int               $user_id
+ * @property string            $name
+ * @property string            $slug
+ * @property string            $description
+ * @property Carbon            $created_at
+ * @property Carbon            $updated_at
+ * @property Carbon            $deleted_at
  *
- * @property string         $url
+ * @property string            $url
  *
- * @property User           user
- * @property Collection     shopItems
+ * @property EtsyUserInterface user
+ * @property Collection        shopItems
  */
 class Wishlist extends SluggedModel
 {
@@ -67,6 +68,6 @@ class Wishlist extends SluggedModel
      */
     public function getUrlAttribute(): string
     {
-        return '/lists/' . $this->user->username . '/' . $this->slug;
+        return '/lists/' . $this->user->getRouteKey() . '/' . $this->slug;
     }
 }

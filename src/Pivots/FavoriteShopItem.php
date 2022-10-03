@@ -2,6 +2,7 @@
 
 namespace Etsy\Pivots;
 
+use Etsy\EtsyUserInterface;
 use Etsy\Models\Shop;
 use Etsy\Models\ShopItem;
 use Carbon\Carbon;
@@ -13,14 +14,14 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  *
  * @package Etsy\Pivots
  *
- * @property int      $user_id
- * @property int      $shop_item_id
- * @property int      $shop_id
- * @property Carbon   $favorited_at
+ * @property int               $user_id
+ * @property int               $shop_item_id
+ * @property int               $shop_id
+ * @property Carbon            $favorited_at
  *
- * @property User     user
- * @property Shop     shop
- * @property ShopItem item
+ * @property EtsyUserInterface user
+ * @property Shop              shop
+ * @property ShopItem          item
  */
 class FavoriteShopItem extends Pivot
 {

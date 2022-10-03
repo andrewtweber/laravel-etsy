@@ -4,6 +4,7 @@ namespace Etsy\Models;
 
 use Carbon\Carbon;
 use Etsy\Enums\ShopStatus;
+use Etsy\EtsyUserInterface;
 use Etsy\Pivots\FavoriteShop;
 use Etsy\Pivots\FavoriteShopItem;
 use Etsy\Etsy;
@@ -22,34 +23,34 @@ use Slimak\SluggedModel;
  *
  * @package Etsy\Models
  *
- * @property int                           $id
- * @property int                           $user_id
- * @property string                        $name
- * @property string                        $slug
- * @property ShopStatus                    $status
- * @property string                        $website
- * @property string                        $logo_shape
- * @property string                        $description
- * @property string                        $country
- * @property bool                          $international_shipping
- * @property int|null                      $etsy_id
- * @property Carbon                        $created_at
- * @property Carbon                        $updated_at
- * @property Carbon                        $deleted_at
+ * @property int                            $id
+ * @property int                            $user_id
+ * @property string                         $name
+ * @property string                         $slug
+ * @property ShopStatus                     $status
+ * @property string                         $website
+ * @property string                         $logo_shape
+ * @property string                         $description
+ * @property string                         $country
+ * @property bool                           $international_shipping
+ * @property int|null                       $etsy_id
+ * @property Carbon                         $created_at
+ * @property Carbon                         $updated_at
+ * @property Carbon                         $deleted_at
  *
- * @property string                        $url
- * @property string                        $tracked_url
- * @property string                        $domain
- * @property HtmlString                    $description_html
- * @property HtmlString|null               $country_emoji
+ * @property string                         $url
+ * @property string                         $tracked_url
+ * @property string                         $domain
+ * @property HtmlString                     $description_html
+ * @property HtmlString|null                $country_emoji
  *
- * @property User                          user
- * @property Collection|ShopCategory[]     categories
- * @property Collection|ShopItem[]         items
- * @property Collection|ShopStats[]        stats
- * @property Collection|ShopItemStats[]    itemStats
- * @property Collection|User[]             favoritedByUsers
- * @property Collection|FavoriteShopItem[] favoritedItems
+ * @property EtsyUserInterface              user
+ * @property Collection|ShopCategory[]      categories
+ * @property Collection|ShopItem[]          items
+ * @property Collection|ShopStats[]         stats
+ * @property Collection|ShopItemStats[]     itemStats
+ * @property Collection|EtsyUserInterface[] favoritedByUsers
+ * @property Collection|FavoriteShopItem[]  favoritedItems
  */
 class Shop extends SluggedModel
 {
@@ -194,7 +195,7 @@ class Shop extends SluggedModel
 
         if ($domain === 'prf.hn') {
             return 'Chewy.com';
-        } else if ($domain === 'barnesandnoble.com') {
+        } elseif ($domain === 'barnesandnoble.com') {
             return 'Barnes & Noble';
         }
 
@@ -236,22 +237,6 @@ class Shop extends SluggedModel
             mb_convert_encoding('&#' . (127397 + ord($this->country[0])) . ';', 'UTF-8', 'HTML-ENTITIES') .
             mb_convert_encoding('&#' . (127397 + ord($this->country[1])) . ';', 'UTF-8', 'HTML-ENTITIES')
         );
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl(): string
-    {
-        return $this->url;
     }
 
     /**

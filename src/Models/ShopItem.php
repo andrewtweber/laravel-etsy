@@ -4,6 +4,7 @@ namespace Etsy\Models;
 
 use App\Services\ProcessPhoto;
 use Etsy\Etsy;
+use Etsy\EtsyUserInterface;
 use Etsy\Pivots\FavoriteShopItem;
 use Etsy\Pivots\WishlistItem;
 use Carbon\Carbon;
@@ -23,31 +24,31 @@ use Slimak\SluggedModel;
  *
  * @package Etsy\Models
  *
- * @property int                        $id
- * @property int                        $shop_id
- * @property int                        $category_id
- * @property string                     $name
- * @property string                     $original_name
- * @property string                     $slug
- * @property string                     $url - The external URL
- * @property int                        $photo_id
- * @property string                     $description
- * @property int|null                   $etsy_id
- * @property int                        $weight
- * @property Carbon                     $created_at
- * @property Carbon                     $updated_at
- * @property Carbon                     $deleted_at
+ * @property int                            $id
+ * @property int                            $shop_id
+ * @property int                            $category_id
+ * @property string                         $name
+ * @property string                         $original_name
+ * @property string                         $slug
+ * @property string                         $url - The external URL
+ * @property int                            $photo_id
+ * @property string                         $description
+ * @property int|null                       $etsy_id
+ * @property int                            $weight
+ * @property Carbon                         $created_at
+ * @property Carbon                         $updated_at
+ * @property Carbon                         $deleted_at
  *
- * @property string                     $tracked_url
- * @property string                     $internal_url
- * @property string                     $domain
- * @property HtmlString                 $description_html
+ * @property string                         $tracked_url
+ * @property string                         $internal_url
+ * @property string                         $domain
+ * @property HtmlString                     $description_html
  *
- * @property Shop                       shop
- * @property ShopCategory               category
- * @property Photo                      photo
- * @property Collection|ShopItemStats[] stats
- * @property Collection|User[]          favoritedByUsers
+ * @property Shop                           shop
+ * @property ShopCategory                   category
+ * @property Photo                          photo
+ * @property Collection|ShopItemStats[]     stats
+ * @property Collection|EtsyUserInterface[] favoritedByUsers
  */
 class ShopItem extends SluggedModel
 {
@@ -168,7 +169,7 @@ class ShopItem extends SluggedModel
 
         if ($domain === 'prf.hn') {
             return 'Chewy.com';
-        } else if ($domain === 'barnesandnoble.com') {
+        } elseif ($domain === 'barnesandnoble.com') {
             return 'Barnes & Noble';
         }
 
