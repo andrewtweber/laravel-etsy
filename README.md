@@ -64,3 +64,8 @@ return [
 ]
 ];
 ```
+
+## Recommendations
+
+* Make sure to add some policies for the `Shop` and `ShopItem` classes. 
+* Some sample Nova models are supplied, copy them into your `app/Nova` folder. 
