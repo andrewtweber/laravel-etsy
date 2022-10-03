@@ -5,8 +5,6 @@ namespace Etsy;
 use Etsy\Models\Shop;
 use Etsy\Models\ShopItem;
 use Etsy\Models\Wishlist;
-use Etsy\Pivots\FavoriteShop;
-use Etsy\Pivots\FavoriteShopItem;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;

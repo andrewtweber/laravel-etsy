@@ -4,7 +4,6 @@ namespace Etsy\Models;
 
 use Carbon\Carbon;
 use Etsy\EtsyUserInterface;
-use Etsy\Pivots\WishlistItem;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;

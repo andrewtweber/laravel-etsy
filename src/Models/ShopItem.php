@@ -2,11 +2,9 @@
 
 namespace Etsy\Models;
 
-use App\Services\ProcessPhoto;
 use Etsy\Etsy;
 use Etsy\EtsyUserInterface;
-use Etsy\Pivots\FavoriteShopItem;
-use Etsy\Pivots\WishlistItem;
+use Etsy\Events\ShopItemPhotoFetched;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Slimak\SluggedModel;
@@ -221,16 +218,10 @@ class ShopItem extends SluggedModel
                 continue;
             }
 
-            $photo = (new ProcessPhoto('shops', Auth::user()))
-                ->fromUrl($url)
-                ->setEntity($this->shop)
-                ->run();
+            // Save the first photo
+            // TODO: save additional photos
+            ShopItemPhotoFetched::dispatch($this, $url, $image['listing_image_id'] ?? null);
 
-            $photo->etsy_id = $image['listing_image_id'] ?? null;
-            $photo->save();
-
-            $this->photo_id = $photo->id;
-            $this->save();
             break;
         }
     }

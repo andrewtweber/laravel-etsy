@@ -3,7 +3,6 @@
 namespace Etsy\Console\Commands;
 
 use Etsy\Jobs\GetShopListings;
-use Etsy\Models\Shop;
 use Illuminate\Console\Command;
 
 /**

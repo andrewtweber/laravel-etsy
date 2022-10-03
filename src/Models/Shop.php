@@ -5,7 +5,6 @@ namespace Etsy\Models;
 use Carbon\Carbon;
 use Etsy\Enums\ShopStatus;
 use Etsy\EtsyUserInterface;
-use Etsy\Pivots\FavoriteShop;
 use Etsy\Pivots\FavoriteShopItem;
 use Etsy\Etsy;
 use Illuminate\Database\Eloquent\Collection;
@@ -15,7 +14,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\HtmlString;
 use Proste\Exceptions\Http404NotFoundException;
-use Proste\Exceptions\HttpException;
 use Slimak\SluggedModel;
 
 /**

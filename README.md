@@ -6,6 +6,12 @@
 composer require andrewtweber/laravel-etsy
 ```
 
+To publish the config and migrations, run:
+
+```
+php artisan vendor:publish --provider="Etsy\EtsyServiceProvider" 
+```
+
 ## User Model
 
 Add the `EtsyUserInterface` interface and `EtsyUser` trait to your `User` class.
@@ -18,6 +24,16 @@ class User extends Model implements EtsyUserInterface
 {
     use EtsyUser;
 }
+```
+
+## API
+
+Go to your [Etsy developer account](https://www.etsy.com/developers/your-apps) to get your API keys and 
+add them to your `.env`
+
+```
+ETSY_API_KEY=
+ETSY_API_SECRET=
 ```
 
 ## Console Commands
@@ -38,10 +54,10 @@ protected function schedule(Schedule $schedule)
 }
 ```
 
-## Extending
+## Extending Models
 
-If you need to extend any of the Etsy classes, you can do so and update the configuration
-to point to the new model.
+If you need to extend any of the Etsy models or pivots, you can do so and update the configuration
+to point to your model class.
 
 Sample model:
 
@@ -63,6 +79,12 @@ return [
     ],
 ];
 ```
+
+## Events
+
+`ShopItemPhotoFetched` - when a new item is synced, this event gets dispatched which contains the
+shop item, the full URL to the image, and Etsy's external ID for that image. You can process this
+(save it to storage, etc) by listening for this event.
 
 ## Recommendations
 
