@@ -2,10 +2,9 @@
 
 namespace Etsy\Pivots;
 
-use App\Models\Food;
-use App\Models\ShopItem;
-use App\Models\Wishlist;
-use App\Support\Enums\WishlistType;
+use Etsy\Models\ShopItem;
+use Etsy\Models\Wishlist;
+use Etsy\Enums\WishlistType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
@@ -16,14 +15,14 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  *
  * @package Etsy\Pivots
  *
- * @property int           $wishlist_id
- * @property WishlistType  $entity_type
- * @property int           $entity_id
- * @property int           $weight
- * @property Carbon        $added_at
+ * @property int          $wishlist_id
+ * @property WishlistType $entity_type
+ * @property int          $entity_id
+ * @property int          $weight
+ * @property Carbon       $added_at
  *
- * @property Wishlist      wishlist
- * @property Food|ShopItem entity
+ * @property Wishlist     wishlist
+ * @property ShopItem     entity
  */
 class WishlistItem extends MorphPivot
 {

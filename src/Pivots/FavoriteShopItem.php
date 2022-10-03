@@ -2,9 +2,8 @@
 
 namespace Etsy\Pivots;
 
-use App\Models\Shop;
-use App\Models\ShopItem;
-use App\Models\User;
+use Etsy\Models\Shop;
+use Etsy\Models\ShopItem;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
@@ -36,7 +35,7 @@ class FavoriteShopItem extends Pivot
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('etsy.user.model'));
     }
 
     /**
