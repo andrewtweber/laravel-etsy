@@ -40,14 +40,12 @@ class Wishlist extends SluggedModel
         'description',
     ];
 
-    protected $metaDescriptionBase = 'description';
-
     /**
      * @return BelongsTo
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('etsy.user.model'));
     }
 
     /**

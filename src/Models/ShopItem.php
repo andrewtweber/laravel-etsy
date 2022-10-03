@@ -112,7 +112,7 @@ class ShopItem extends SluggedModel
      */
     public function favoritedByUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'favorite_shop_items', 'shop_item_id', 'user_id')
+        return $this->belongsToMany(config('etsy.user.model'), 'favorite_shop_items', 'shop_item_id', 'user_id')
             ->using(FavoriteShopItem::class)
             ->withPivot([
                 'shop_id',
@@ -243,24 +243,6 @@ class ShopItem extends SluggedModel
             $this->save();
             break;
         }
-    }
-
-    /**
-     * Simplified array for Elasticache
-     * This is not *just* fields to be indexed, but anything we want it to return
-     *
-     * Note: id is automatically included
-     */
-    public function getIndexDocumentData()
-    {
-        $searchable = trim("{$this->shop->name} {$this->name} {$this->category?->name}");
-
-        return [
-            'searchable'  => str_replace('&', ' and ', $searchable),
-            'name'        => $this->name,
-            'shop_id'     => $this->shop_id,
-            'category_id' => $this->category_id,
-        ];
     }
 
     /**

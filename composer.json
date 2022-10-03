@@ -17,6 +17,10 @@
     "repositories": [
         {
             "type": "vcs",
+            "url": "https://github.com/andrewtweber/laravel-snaccs.git"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/andrewtweber/proste-sdk.git"
         },
         {
@@ -33,6 +37,7 @@
     ],
     "require": {
         "php": "^8.1",
+        "andrewtweber/laravel-snaccs": "dev-master",
         "andrewtweber/proste-sdk": "dev-master",
         "andrewtweber/slimak": "dev-master",
         "laravel/framework": "^8.12|^9.0",

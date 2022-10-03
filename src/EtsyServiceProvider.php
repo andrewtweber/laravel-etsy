@@ -19,13 +19,17 @@ class EtsyServiceProvider extends ServiceProvider
     public function boot()
     {
         $migrations = realpath(__DIR__ . '/../database/migrations');
+        $config = realpath(__DIR__ . '/../config/etsy.php');
 
         if ($this->app instanceof LaravelApplication) {
             $this->publishes([
                 $migrations => database_path('migrations'),
+                $config     => config_path('etsy.php'),
             ]);
         } elseif ($this->app instanceof LumenApplication) {
-            //
+            $this->app->configure('etsy');
         }
+
+        $this->mergeConfigFrom($config, 'etsy');
     }
 }
