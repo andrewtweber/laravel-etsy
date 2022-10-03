@@ -23,7 +23,7 @@ class CreateShops extends Migration
             $table->enum('status', ShopStatus::values())->default(ShopStatus::Active->value);
             $table->text('website');
             $table->unsignedBigInteger('photo_id')->nullable()->index();
-            $table->enum('logo_shape', ThumbnailShape::values())->default(ThumbnailShape::SQUARE);
+            $table->enum('logo_shape', ThumbnailShape::values())->default(ThumbnailShape::Square);
             $table->text('description');
             $table->char('country', 2)->nullable();
             $table->boolean('international_shipping')->nullable();

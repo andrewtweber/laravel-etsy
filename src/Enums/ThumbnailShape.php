@@ -3,15 +3,15 @@
 namespace Etsy\Enums;
 
 /**
- * Class ThumbnailShape
+ * Enum ThumbnailShape
  *
  * @package Etsy\Enums
  */
-class ThumbnailShape
+enum ThumbnailShape: string
 {
     use EnumValues;
 
-    public const CIRCLE  = 'circle';
-    public const SQUARE  = 'square';
-    public const ROUNDED = 'rounded';
+    public const Circle  = 'circle';
+    public const Square  = 'square';
+    public const Rounded = 'rounded';
 }
