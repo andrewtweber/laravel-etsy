@@ -5,6 +5,7 @@ namespace Etsy\Models;
 use Carbon\Carbon;
 use Etsy\Enums\ShopStatus;
 use Etsy\EtsyUserInterface;
+use Etsy\Exceptions\MissingTaxonomyException;
 use Etsy\Pivots\FavoriteShopItem;
 use Etsy\Etsy;
 use Illuminate\Database\Eloquent\Collection;
@@ -299,6 +300,10 @@ class Shop extends SluggedModel
             if (! $item->category_id) {
                 /** @var EtsyTaxonomy $taxonomy */
                 $taxonomy = EtsyTaxonomy::where('etsy_taxonomy_id', $result['taxonomy_id'])->first();
+
+                if (! $taxonomy) {
+                    throw new MissingTaxonomyException();
+                }
 
                 do {
                     if ($taxonomy->shop_category_id) {
