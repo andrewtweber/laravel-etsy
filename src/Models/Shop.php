@@ -46,14 +46,12 @@ use Slimak\SluggedModel;
  * @property EtsyUserInterface              user
  * @property Collection|ShopCategory[]      categories
  * @property Collection|ShopItem[]          items
- * @property Collection|ShopStats[]         stats
- * @property Collection|ShopItemStats[]     itemStats
  * @property Collection|EtsyUserInterface[] favoritedByUsers
  * @property Collection|FavoriteShopItem[]  favoritedItems
  */
 class Shop extends SluggedModel
 {
-    use SoftDeletes;
+    use HasShopStats, SoftDeletes;
 
     protected $table = 'shops';
 
@@ -98,22 +96,6 @@ class Shop extends SluggedModel
     public function items(): HasMany
     {
         return $this->hasMany(config('etsy.models.shop_item'));
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function stats(): HasMany
-    {
-        return $this->hasMany(ShopStats::class);
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function itemStats(): HasMany
-    {
-        return $this->hasMany(ShopItemStats::class);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace Etsy\Observers;
 use Etsy\Etsy;
 use Etsy\Jobs\GetShopListings;
 use Etsy\Models\Shop;
+use Proste\Exceptions\HttpException;
 
 /**
  * Class ShopObserver
@@ -43,10 +44,14 @@ class ShopObserver
             return;
         }
 
-        $data = (new Etsy())->getShopDetails($name);
+        try {
+            $data = (new Etsy())->getShopDetails($name);
 
-        if (isset($data['shop_id'])) {
-            $shop->etsy_id = $data['shop_id'];
+            if (isset($data['shop_id'])) {
+                $shop->etsy_id = $data['shop_id'];
+            }
+        } catch (HttpException $e) {
+            // TODO: log?
         }
     }
 
