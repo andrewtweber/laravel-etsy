@@ -19,10 +19,10 @@ class CreateShopItems extends Migration
             $table->unsignedBigInteger('category_id')->nullable()->index();
             $table->string('name');
             $table->string('original_name')->nullable();
-            $table->string('slug')->unique()->nullable();
+            $table->string('slug')->unique();
             $table->text('url');
             $table->unsignedBigInteger('photo_id')->nullable()->index();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('etsy_id')->nullable();
             $table->integer('weight')->default(0)->index();
             $table->timestamps();

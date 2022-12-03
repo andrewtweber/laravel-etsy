@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\HtmlString;
 use Proste\Exceptions\Http404NotFoundException;
 use Slimak\SluggedModel;
+use Snaccs\Casts\Website;
+use Snaccs\Support\Url;
 
 /**
  * Class Shop
@@ -23,19 +25,19 @@ use Slimak\SluggedModel;
  * @package Etsy\Models
  *
  * @property int                            $id
- * @property int                            $user_id
+ * @property int|null                       $user_id
  * @property string                         $name
  * @property string                         $slug
  * @property ShopStatus                     $status
- * @property string                         $website
+ * @property Url                            $website
  * @property string                         $logo_shape
- * @property string                         $description
- * @property string                         $country
- * @property bool                           $international_shipping
+ * @property string|null                    $description
+ * @property string|null                    $country
+ * @property bool|null                      $international_shipping
  * @property int|null                       $etsy_id
  * @property Carbon                         $created_at
  * @property Carbon                         $updated_at
- * @property Carbon                         $deleted_at
+ * @property Carbon|null                    $deleted_at
  *
  * @property string                         $url
  * @property string                         $tracked_url
@@ -68,6 +70,7 @@ class Shop extends SluggedModel
     protected $casts = [
         'international_shipping' => 'boolean',
         'status'                 => ShopStatus::class,
+        'website'                => Website::class,
     ];
 
     public $timestamps = true;

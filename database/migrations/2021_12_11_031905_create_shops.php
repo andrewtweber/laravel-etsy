@@ -24,7 +24,7 @@ class CreateShops extends Migration
             $table->text('website');
             $table->unsignedBigInteger('photo_id')->nullable()->index();
             $table->enum('logo_shape', ThumbnailShape::values())->default(ThumbnailShape::Square->value);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->char('country', 2)->nullable();
             $table->boolean('international_shipping')->nullable();
             $table->unsignedBigInteger('etsy_id')->nullable();
