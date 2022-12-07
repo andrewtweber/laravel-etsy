@@ -44,7 +44,7 @@ class ShopCategory extends SluggedModel
      */
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(static::class);
+        return $this->belongsTo(static::class, 'parent_id');
     }
 
     /**

@@ -73,7 +73,7 @@ class ShopItem extends SluggedModel
      */
     public function shop(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.models.shop'));
+        return $this->belongsTo(config('etsy.models.shop'), 'shop_id');
     }
 
     /**
@@ -89,7 +89,7 @@ class ShopItem extends SluggedModel
      */
     public function stats(): HasMany
     {
-        return $this->hasMany(ShopItemStats::class);
+        return $this->hasMany(ShopItemStats::class, 'shop_item_id');
     }
 
     /**

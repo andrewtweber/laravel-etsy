@@ -36,7 +36,7 @@ class ShopItemStats extends Model
      */
     public function shop(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.models.shop'));
+        return $this->belongsTo(config('etsy.models.shop'), 'shop_id');
     }
 
     /**

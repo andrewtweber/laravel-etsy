@@ -45,7 +45,7 @@ class Wishlist extends SluggedModel
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.models.user'));
+        return $this->belongsTo(config('etsy.models.user'), 'user_id');
     }
 
     /**

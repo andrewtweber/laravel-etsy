@@ -83,7 +83,7 @@ class Shop extends SluggedModel
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('etsy.models.user'));
+        return $this->belongsTo(config('etsy.models.user'), 'user_id');
     }
 
     /**
@@ -99,7 +99,7 @@ class Shop extends SluggedModel
      */
     public function items(): HasMany
     {
-        return $this->hasMany(config('etsy.models.shop_item'));
+        return $this->hasMany(config('etsy.models.shop_item'), 'shop_id');
     }
 
     /**
@@ -119,7 +119,7 @@ class Shop extends SluggedModel
      */
     public function favoritedItems(): HasMany
     {
-        return $this->hasMany(config('etsy.models.favorite_item'));
+        return $this->hasMany(config('etsy.models.favorite_item'), 'shop_id');
     }
 
     /**
