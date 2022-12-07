@@ -3,6 +3,7 @@
 namespace Etsy\Models;
 
 use Carbon\Carbon;
+use Etsy\Enums\Etsy\ListingState;
 use Etsy\Enums\ShopStatus;
 use Etsy\EtsyUserInterface;
 use Etsy\Exceptions\MissingTaxonomyException;
@@ -261,7 +262,7 @@ class Shop extends SluggedModel
         foreach ($listings['results'] ?? [] as $result) {
             // Note these are all active (we can only fetch active items from the API)
             // But if we ever used OAuth we'd have access to inactive listings too
-            if ($result['state'] !== 'active') {
+            if ($result['state'] !== ListingState::Active->value) {
                 continue;
             }
 

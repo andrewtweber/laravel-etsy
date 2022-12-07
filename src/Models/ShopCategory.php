@@ -82,7 +82,7 @@ class ShopCategory extends SluggedModel
             return null;
         }
 
-        return str_replace(['fas ', 'far '], 'fad ', $this->icon);
+        return str_replace(['fas ', 'far ', 'fab '], 'fad ', $this->icon);
     }
 
     /**
