@@ -116,7 +116,8 @@ class ShopCategory extends SluggedModel
             $query->where('category_id', $this->id);
         })->get();
 
+        // Sort by name, ignoring articles like "a" or "the"
         $this->shops = $this->shops->merge($shops)
-            ->sortBy(fn(Shop $shop) => strip_articles($shop->name));
+            ->sortBy(fn(Shop $shop) => strtolower(strip_articles($shop->name)));
     }
 }
