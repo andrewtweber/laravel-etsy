@@ -285,8 +285,9 @@ class Shop extends SluggedModel
             // Map taxonomy to category if it isn't set already
             // TODO: option to force Etsy's value to overwrite the existing one?
             if (! $item->category_id) {
-                /** @var EtsyTaxonomy $taxonomy */
-                $taxonomy = EtsyTaxonomy::where('etsy_taxonomy_id', $result['taxonomy_id'])->first();
+                /** @var EtsyTaxonomy $original_taxonomy */
+                $original_taxonomy = EtsyTaxonomy::where('etsy_taxonomy_id', $result['taxonomy_id'])->first();
+                $taxonomy = $original_taxonomy;
 
                 if (! $taxonomy) {
                     throw new MissingTaxonomyException();
@@ -304,10 +305,10 @@ class Shop extends SluggedModel
                 // No category found - create one if setting is enabled.
                 if (! $item->category_id && config('etsy.import_unmapped_taxonomies')) {
                     $category = ShopCategory::create([
-                        'name' => $taxonomy->name
+                        'name' => $original_taxonomy->name,
                     ]);
-                    $taxonomy->shop_category_id = $category->id;
-                    $taxonomy->save();
+                    $original_taxonomy->shop_category_id = $category->id;
+                    $original_taxonomy->save();
 
                     $item->category_id = $category->id;
                 }
