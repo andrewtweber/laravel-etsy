@@ -17,9 +17,9 @@ use Slimak\SluggedModel;
  * @property string                    $name
  * @property string                    $slug
  * @property int|null                  $parent_id
- * @property string                    $icon
- * @property string                    $primary_color
- * @property string                    $secondary_color
+ * @property string|null               $icon
+ * @property string|null               $primary_color
+ * @property string|null               $secondary_color
  *
  * @property string                    $url
  *
@@ -34,7 +34,10 @@ class ShopCategory extends SluggedModel
 
     protected $fillable = [
         'name',
+        'parent_id',
         'icon',
+        'primary_color',
+        'secondary_color',
     ];
 
     public $timestamps = false;

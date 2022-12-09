@@ -271,6 +271,7 @@ class Shop extends SluggedModel
 
             $item_class = config('etsy.models.shop_item');
 
+            /** @var ShopItem $item */
             $item = $item_class::withTrashed()->firstOrNew([
                 'shop_id' => $this->id,
                 'etsy_id' => $result['listing_id'],
@@ -299,6 +300,17 @@ class Shop extends SluggedModel
                         $taxonomy = $taxonomy->parent;
                     }
                 } while ($taxonomy !== null);
+
+                // No category found - create one if setting is enabled.
+                if (! $item->category_id && config('etsy.import_unmapped_taxonomies')) {
+                    $category = ShopCategory::create([
+                        'name' => $taxonomy->name
+                    ]);
+                    $taxonomy->shop_category_id = $category->id;
+                    $taxonomy->save();
+
+                    $item->category_id = $category->id;
+                }
             }
 
             $old_original = $item->original_name;

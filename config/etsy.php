@@ -2,12 +2,36 @@
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Import unmapped taxonomies
+    |--------------------------------------------------------------------------
+    |
+    | If this is true, any taxonomy that is not associated to a category will
+    | automatically have a category created.
+    */
+    'import_unmapped_taxonomies' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Keys
+    |--------------------------------------------------------------------------
+    |
+    | @see https://www.etsy.com/developers/your-apps
+    */
     'api' => [
-        // https://www.etsy.com/developers/your-apps
         'key'    => env('ETSY_API_KEY'),
         'secret' => env('ETSY_API_SECRET'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Models
+    |--------------------------------------------------------------------------
+    |
+    | If you need to extend the Etsy classes you can do so and add your child
+    | class here.
+    */
     'models' => [
         // User models
         'user'          => \App\Models\User::class,
