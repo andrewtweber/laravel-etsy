@@ -302,15 +302,32 @@ class Shop extends SluggedModel
                     }
                 } while ($taxonomy !== null);
 
-                // No category found - create one if setting is enabled.
+                // No category found - create one (and parents) if setting is enabled.
                 if (! $item->category_id && config('etsy.import_unmapped_taxonomies')) {
-                    $category = ShopCategory::create([
-                        'name' => $original_taxonomy->name,
-                    ]);
-                    $original_taxonomy->shop_category_id = $category->id;
-                    $original_taxonomy->save();
+                    $taxonomy = $original_taxonomy;
+                    $hierarchy = [];
 
-                    $item->category_id = $category->id;
+                    do {
+                        if (! $taxonomy->shop_category_id) {
+                            $category = ShopCategory::create([
+                                'name' => $taxonomy->name,
+                            ]);
+                            $taxonomy->shop_category_id = $category->id;
+                        } else {
+                            $category = $taxonomy->shopCategory;
+                        }
+                        $hierarchy[] = $category;
+                    } while ($taxonomy !== null);
+
+                    $parent = null;
+                    foreach (array_reverse($hierarchy) as $category) {
+                        $category->parent_id = $parent?->id;
+                        $category->save();
+                        $parent = $category;
+                    }
+
+                    $original_taxonomy->refresh();
+                    $item->category_id = $original_taxonomy->shop_category_id;
                 }
             }
 
