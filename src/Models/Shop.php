@@ -308,15 +308,18 @@ class Shop extends SluggedModel
                     $hierarchy = [];
 
                     do {
-                        if (! $taxonomy->shop_category_id) {
+                        $category = $taxonomy->shopCategory;
+
+                        if (! $category) {
                             $category = ShopCategory::create([
                                 'name' => $taxonomy->name,
                             ]);
                             $taxonomy->shop_category_id = $category->id;
-                        } else {
-                            $category = $taxonomy->shopCategory;
+                            $taxonomy->save();
                         }
+
                         $hierarchy[] = $category;
+                        $taxonomy = $taxonomy->parent;
                     } while ($taxonomy !== null);
 
                     $parent = null;
