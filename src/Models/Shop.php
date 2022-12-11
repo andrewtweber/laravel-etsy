@@ -311,7 +311,8 @@ class Shop extends SluggedModel
                         $category = $taxonomy->shopCategory;
 
                         if (! $category) {
-                            $category = ShopCategory::create([
+                            // Even if we just used `create`, it shouldn't create duplicates, but just in case.
+                            $category = ShopCategory::firstOrCreate([
                                 'name' => $taxonomy->name,
                             ]);
                             $taxonomy->shop_category_id = $category->id;
