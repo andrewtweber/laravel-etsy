@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Slimak\SluggedModel;
+use Snaccs\Support\Url;
 
 /**
  * Class ShopItem
@@ -38,6 +39,7 @@ use Slimak\SluggedModel;
  *
  * @property string                         $tracked_url
  * @property string                         $internal_url
+ * @property string                         $base_domain
  * @property string                         $domain
  * @property HtmlString                     $description_html
  *
@@ -139,11 +141,25 @@ class ShopItem extends SluggedModel
      */
     public function getButtonTextAttribute(): string
     {
-        if ($this->domain === 'Barnes & Noble') {
-            return "Buy at {$this->domain}";
+        if ($this->base_domain === 'barnesandnoble.com') {
+            return "Buy at Barnes & Noble";
         }
 
-        return "Buy on {$this->domain}";
+        return 'Buy on ' . ucwords($this->base_domain);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getBaseDomainAttribute(): ?string
+    {
+        $url = new Url($this->url);
+
+        if ($url->base_domain === 'prf.hn') {
+            return 'chewy.com';
+        }
+
+        return strtolower($url->base_domain);
     }
 
     /**
@@ -151,15 +167,13 @@ class ShopItem extends SluggedModel
      */
     public function getDomainAttribute(): ?string
     {
-        $domain = parse_domain($this->url);
+        $url = new Url($this->url);
 
-        if ($domain === 'prf.hn') {
-            return 'Chewy.com';
-        } elseif ($domain === 'barnesandnoble.com') {
-            return 'Barnes & Noble';
+        if ($url->domain === 'prf.hn') {
+            return 'chewy.com';
         }
 
-        return $domain === null ? null : ucwords($domain);
+        return strtolower($url->domain);
     }
 
     /**
@@ -167,11 +181,11 @@ class ShopItem extends SluggedModel
      */
     public function getButtonClassAttribute(): string
     {
-        return match ($this->domain) {
-            'Amazon.com' => 'amazon',
-            'Barnes & Noble' => 'bn',
-            'Chewy.com' => 'chewy',
-            'Etsy.com' => 'etsy',
+        return match ($this->base_domain) {
+            'amazon.com' => 'amazon',
+            'barnesandnoble.com' => 'bn',
+            'chewy.com' => 'chewy',
+            'etsy.com' => 'etsy',
             default => 'primary',
         };
     }
