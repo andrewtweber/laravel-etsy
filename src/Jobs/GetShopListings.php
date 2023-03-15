@@ -22,9 +22,11 @@ class GetShopListings implements ShouldQueue
      * Create a new job instance.
      *
      * @param Shop $shop
+     * @param bool $force
      */
     public function __construct(
-        public Shop $shop
+        public Shop $shop,
+        public bool $force = false
     ) {
     }
 
@@ -33,6 +35,6 @@ class GetShopListings implements ShouldQueue
      */
     public function handle()
     {
-        $this->shop->getListingsFromEtsy();
+        $this->shop->getListingsFromEtsy($this->force);
     }
 }

@@ -17,7 +17,7 @@ class EtsyUpdateListings extends Command
      *
      * @var string
      */
-    protected $signature = 'etsy:shops';
+    protected $signature = 'etsy:shops {--force}';
 
     /**
      * The console command description.
@@ -35,8 +35,10 @@ class EtsyUpdateListings extends Command
 
         $shops = $shop_class::whereNotNull('etsy_id')->cursor();
 
+        $force = $this->option('force');
+
         foreach ($shops as $shop) {
-            dispatch_with_delay(new GetShopListings($shop), 5, 5);
+            dispatch_with_delay(new GetShopListings($shop, $force), 5, 5);
         }
     }
 }

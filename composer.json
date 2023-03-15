@@ -40,7 +40,7 @@
         "andrewtweber/laravel-snaccs": "dev-master",
         "andrewtweber/proste-sdk": "dev-master",
         "andrewtweber/slimak": "dev-master",
-        "laravel/framework": "^8.12|^9.0",
+        "laravel/framework": "^8.12|^9.0|^10.0",
         "nesbot/carbon": "^2.60"
     },
     "require-dev": {
