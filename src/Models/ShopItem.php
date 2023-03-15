@@ -99,12 +99,11 @@ class ShopItem extends SluggedModel
      */
     public function wishlists(): MorphToMany
     {
+        $pivot = config('etsy.models.wishlist_item');
+
         return $this->morphToMany(config('etsy.models.wishlist'), 'entity', 'wishlist_items')
-            ->using(config('etsy.models.wishlist_item'))
-            ->withPivot([
-                'weight',
-                'added_at',
-            ]);
+            ->using($pivot)
+            ->withPivot($pivot::pivotFields());
     }
 
     /**
@@ -112,12 +111,11 @@ class ShopItem extends SluggedModel
      */
     public function favoritedByUsers(): BelongsToMany
     {
+        $pivot = config('etsy.models.favorite_item');
+
         return $this->belongsToMany(config('etsy.models.user'), 'favorite_shop_items', 'shop_item_id', 'user_id')
-            ->using(config('etsy.models.favorite_item'))
-            ->withPivot([
-                'shop_id',
-                'favorited_at',
-            ]);
+            ->using($pivot)
+            ->withPivot($pivot::pivotFields());
     }
 
     /**

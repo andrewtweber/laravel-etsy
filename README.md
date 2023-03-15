@@ -28,7 +28,7 @@ class User extends Model implements EtsyUserInterface
 
 ## API
 
-Go to your [Etsy developer account](https://www.etsy.com/developers/your-apps) to get your API keys and 
+Go to your [Etsy developer account](https://www.etsy.com/developers/your-apps) to get your API keys and
 add them to your `.env`
 
 ```
@@ -97,5 +97,10 @@ shop item, the full URL to the image, and Etsy's external ID for that image. You
 
 ## Recommendations
 
-* Make sure to add some policies for the `Shop` and `ShopItem` classes. 
-* Some sample Nova models are supplied, copy them into your `app/Nova` folder. 
+* Make sure to add some policies for the `Shop` and `ShopItem` classes.
+* Some sample Nova models are supplied, copy them into your `app/Nova` folder.
+
+## TODO
+
+* Not sure if the observers can be registered in the package service provider, especially if the model classes are
+  overridden.

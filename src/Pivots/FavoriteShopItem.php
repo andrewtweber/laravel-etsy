@@ -54,4 +54,15 @@ class FavoriteShopItem extends Pivot
     {
         return $this->belongsTo(config('etsy.models.shop_item'), 'shop_item_id');
     }
+
+    /**
+     * @return string[]
+     */
+    public static function pivotFields(): array
+    {
+        return [
+            'shop_id',
+            'favorited_at',
+        ];
+    }
 }

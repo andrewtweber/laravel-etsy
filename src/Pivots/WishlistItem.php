@@ -51,4 +51,15 @@ class WishlistItem extends MorphPivot
     {
         return $this->morphTo();
     }
+
+    /**
+     * @return string[]
+     */
+    public static function pivotFields(): array
+    {
+        return [
+            'weight',
+            'added_at',
+        ];
+    }
 }

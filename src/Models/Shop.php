@@ -108,11 +108,11 @@ class Shop extends SluggedModel
      */
     public function favoritedByUsers(): BelongsToMany
     {
+        $pivot = config('etsy.models.favorite_shop');
+
         return $this->belongsToMany(config('etsy.models.user'), 'favorite_shops', 'shop_id', 'user_id')
-            ->using(config('etsy.models.favorite_shop'))
-            ->withPivot([
-                'favorited_at',
-            ]);
+            ->using($pivot)
+            ->withPivot($pivot::pivotFields());
     }
 
     /**
