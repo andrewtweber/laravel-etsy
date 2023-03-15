@@ -269,6 +269,11 @@ class Shop extends SluggedModel
             return;
         }
 
+        // TODO: when is Vacation status set?
+
+        $this->status = ShopStatus::Active;
+        $this->save();
+
         $new_or_updated_ids = [];
 
         $counter = 1;
