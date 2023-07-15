@@ -2,6 +2,9 @@
 
 ## Installation
 
+(This is not actually published yet, as it is in pre-alpha. I do not follow semantic versioning, so use at your own risk)
+
+
 ```
 composer require andrewtweber/laravel-etsy
 ```
