@@ -31,6 +31,8 @@ use Snaccs\Support\Url;
  * @property string                         $url - The external URL
  * @property int                            $photo_id
  * @property string|null                    $description
+ * @property int|null                       $price - The minimum price
+ * @property string|null                    $currency
  * @property int|null                       $etsy_id
  * @property int                            $weight
  * @property Carbon                         $created_at
@@ -62,6 +64,8 @@ class ShopItem extends SluggedModel
         'url',
         'photo_id',
         'description',
+        'price',
+        'currency',
         'etsy_id',
         'weight',
     ];

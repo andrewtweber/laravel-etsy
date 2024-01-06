@@ -296,6 +296,7 @@ class Shop extends SluggedModel
             ]);
 
             // Item has already been imported and deleted
+            // TODO: if item is undeleted on Etsy it won't be undeleted here
             if ($item->deleted_at) {
                 continue;
             }
@@ -359,6 +360,8 @@ class Shop extends SluggedModel
                 'original_name' => html_entity_decode($result['title']),
                 'description'   => html_entity_decode($result['description']),
                 'url'           => $result['url'],
+                'price'         => $result['price']['amount'] ?? null,
+                'currency'      => $result['price']['currency_code'] ?? null,
                 'weight'        => $weight,
             ]);
 
