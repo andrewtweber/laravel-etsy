@@ -26,7 +26,9 @@ class FavoriteShop extends Pivot
 
     public $timestamps = false;
 
-    protected $dates = ['favorited_at'];
+    protected $casts = [
+        'favorited_at' => 'datetime',
+    ];
 
     /**
      * @return BelongsTo

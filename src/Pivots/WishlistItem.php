@@ -32,9 +32,8 @@ class WishlistItem extends MorphPivot
 
     protected $casts = [
         'entity_type' => WishlistType::class,
+        'added_at'    => 'datetime',
     ];
-
-    protected $dates = ['added_at'];
 
     /**
      * @return BelongsTo
