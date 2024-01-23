@@ -1,3 +1,5 @@
+[![Laravel Etsy](https://raw.githubusercontent.com/andrewtweber/laravel-etsy/master/art/banner.png)](https://andrew.cool)
+
 # Laravel Etsy
 
 ## Installation
