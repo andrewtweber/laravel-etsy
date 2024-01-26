@@ -2,6 +2,8 @@
 
 # Laravel Etsy
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/andrewtweber/laravel-etsy/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/andrewtweber/laravel-etsy/tree/master)
+
 ## Installation
 
 (This is not actually published yet, as it is in pre-alpha. I do not follow semantic versioning, so use at your own risk)
