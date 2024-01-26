@@ -22,34 +22,34 @@ use Snaccs\Support\Url;
  *
  * @package Etsy\Models
  *
- * @property int                            $id
- * @property int|null                       $shop_id
- * @property int|null                       $category_id
- * @property string                         $name
- * @property string                         $original_name
- * @property string                         $slug
- * @property string                         $url - The external URL
- * @property int                            $photo_id
- * @property string|null                    $description
- * @property int|null                       $price - The minimum price
- * @property string|null                    $currency
- * @property int|null                       $etsy_id
- * @property int                            $weight
- * @property Carbon                         $created_at
- * @property Carbon                         $updated_at
- * @property Carbon|null                    $deleted_at
+ * @property int                           $id
+ * @property ?int                          $shop_id
+ * @property ?int                          $category_id
+ * @property string                        $name
+ * @property ?string                       $original_name
+ * @property string                        $slug
+ * @property string                        $url - The external URL
+ * @property ?int                          $photo_id
+ * @property ?string                       $description
+ * @property ?int                          $price - The minimum price
+ * @property ?string                       $currency
+ * @property ?int                          $etsy_id
+ * @property int                           $weight
+ * @property Carbon                        $created_at
+ * @property Carbon                        $updated_at
+ * @property ?Carbon                       $deleted_at
  *
- * @property string                         $tracked_url
- * @property string                         $internal_url
- * @property string                         $base_domain
- * @property string                         $domain
- * @property HtmlString                     $description_html
+ * @property string                        $tracked_url
+ * @property string                        $internal_url
+ * @property string                        $base_domain
+ * @property string                        $domain
+ * @property HtmlString                    $description_html
  *
- * @property Shop|null                      shop
- * @property ShopCategory|null              category
- * @property Photo|null                     photo
- * @property Collection|ShopItemStats[]     stats
- * @property Collection|EtsyUserInterface[] favoritedByUsers
+ * @property ?Shop                         $shop
+ * @property ?ShopCategory                 $category
+ * @property ?Photo                        $photo
+ * @property Collection<ShopItemStats>     $stats
+ * @property Collection<EtsyUserInterface> $favoritedByUsers
  */
 class ShopItem extends SluggedModel
 {

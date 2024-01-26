@@ -13,20 +13,20 @@ use Slimak\SluggedModel;
  *
  * @package Etsy\Models
  *
- * @property int                       $id
- * @property string                    $name
- * @property string                    $slug
- * @property int|null                  $parent_id
- * @property string|null               $icon
- * @property string|null               $primary_color
- * @property string|null               $secondary_color
+ * @property int                      $id
+ * @property string                   $name
+ * @property string                   $slug
+ * @property ?int                     $parent_id
+ * @property ?string                  $icon
+ * @property ?string                  $primary_color
+ * @property ?string                  $secondary_color
  *
- * @property string                    $url
+ * @property string                   $url
  *
- * @property ShopCategory              parent
- * @property Collection|ShopCategory[] children
- * @property Collection|Shop[]         shops
- * @property Collection|ShopItem[]     items
+ * @property ?ShopCategory            $parent
+ * @property Collection<ShopCategory> $children
+ * @property Collection<Shop>         $shops
+ * @property Collection<ShopItem>     $items
  */
 class ShopCategory extends SluggedModel
 {

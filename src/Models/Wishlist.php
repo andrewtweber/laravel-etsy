@@ -19,15 +19,15 @@ use Slimak\SluggedModel;
  * @property int               $user_id
  * @property string            $name
  * @property string            $slug
- * @property string            $description
+ * @property ?string           $description
  * @property Carbon            $created_at
  * @property Carbon            $updated_at
- * @property Carbon            $deleted_at
+ * @property ?Carbon           $deleted_at
  *
  * @property string            $url
  *
- * @property EtsyUserInterface user
- * @property Collection        shopItems
+ * @property EtsyUserInterface $user
+ * @property Collection        $shopItems
  */
 class Wishlist extends SluggedModel
 {

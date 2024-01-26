@@ -25,33 +25,33 @@ use Snaccs\Support\Url;
  *
  * @package Etsy\Models
  *
- * @property int                            $id
- * @property int|null                       $user_id
- * @property string                         $name
- * @property string                         $slug
- * @property ShopStatus                     $status
- * @property Url                            $website
- * @property string                         $logo_shape
- * @property string|null                    $description
- * @property string|null                    $country
- * @property bool|null                      $international_shipping
- * @property int|null                       $etsy_id
- * @property Carbon                         $created_at
- * @property Carbon                         $updated_at
- * @property Carbon|null                    $deleted_at
+ * @property int                           $id
+ * @property ?int                          $user_id
+ * @property string                        $name
+ * @property string                        $slug
+ * @property ShopStatus                    $status
+ * @property Url                           $website
+ * @property string                        $logo_shape
+ * @property ?string                       $description
+ * @property ?string                       $country
+ * @property ?bool                         $international_shipping
+ * @property ?int                          $etsy_id
+ * @property Carbon                        $created_at
+ * @property Carbon                        $updated_at
+ * @property ?Carbon                       $deleted_at
  *
- * @property string                         $url
- * @property string                         $tracked_url
- * @property string                         $base_domain
- * @property string                         $domain
- * @property HtmlString                     $description_html
- * @property HtmlString|null                $country_emoji
+ * @property string                        $url
+ * @property string                        $tracked_url
+ * @property string                        $base_domain
+ * @property string                        $domain
+ * @property HtmlString                    $description_html
+ * @property HtmlString|null               $country_emoji
  *
- * @property EtsyUserInterface              user
- * @property Collection|ShopCategory[]      categories
- * @property Collection|ShopItem[]          items
- * @property Collection|EtsyUserInterface[] favoritedByUsers
- * @property Collection|FavoriteShopItem[]  favoritedItems
+ * @property ?EtsyUserInterface            $user
+ * @property Collection<ShopCategory>      $categories
+ * @property Collection<ShopItem>          $items
+ * @property Collection<EtsyUserInterface> $favoritedByUsers
+ * @property Collection<FavoriteShopItem>  $favoritedItems
  */
 class Shop extends SluggedModel
 {

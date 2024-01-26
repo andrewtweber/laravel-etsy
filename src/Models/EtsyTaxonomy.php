@@ -12,15 +12,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @package App\Models
  *
- * @property int                       $id
- * @property string                    $name
- * @property int                       $etsy_taxonomy_id
- * @property int                       $etsy_parent_id
- * @property int|null                  $shop_category_id
+ * @property int                      $id
+ * @property string                   $name
+ * @property int                      $etsy_taxonomy_id
+ * @property ?int                     $etsy_parent_id
+ * @property ?int                     $shop_category_id
  *
- * @property EtsyTaxonomy              parent
- * @property ShopCategory              category
- * @property Collection|EtsyTaxonomy[] children
+ * @property ?EtsyTaxonomy            $parent
+ * @property ?ShopCategory            $category
+ * @property Collection<EtsyTaxonomy> $children
  */
 class EtsyTaxonomy extends Model
 {

@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int    $views
  * @property int    $website_clicks
  *
- * @property Shop   shop
+ * @property Shop   $shop
  */
 class ShopStats extends Model
 {

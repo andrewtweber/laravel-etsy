@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @package Etsy\Models
  *
- * @property Collection|ShopStats[]     stats
- * @property Collection|ShopItemStats[] itemStats
+ * @property Collection<ShopStats>     $stats
+ * @property Collection<ShopItemStats> $itemStats
  */
 trait HasShopStats
 {
