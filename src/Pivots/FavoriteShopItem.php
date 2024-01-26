@@ -19,9 +19,9 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property int               $shop_id
  * @property Carbon            $favorited_at
  *
- * @property EtsyUserInterface user
- * @property Shop              shop
- * @property ShopItem          item
+ * @property EtsyUserInterface $user
+ * @property Shop              $shop
+ * @property ShopItem          $item
  */
 class FavoriteShopItem extends Pivot
 {

@@ -277,7 +277,7 @@ class Shop extends SluggedModel
         $new_or_updated_ids = [];
 
         $counter = 1;
-        foreach ($listings['results'] ?? [] as $result) {
+        foreach ($listings['results'] as $result) {
             // Note these are all active (we can only fetch active items from the API)
             // But if we ever used OAuth we'd have access to inactive listings too
             if ($result['state'] !== ListingState::Active->value) {
@@ -304,7 +304,7 @@ class Shop extends SluggedModel
             // Map taxonomy to category if it isn't set already
             // TODO: option to force Etsy's value to overwrite the existing one?
             if (! $item->category_id) {
-                /** @var EtsyTaxonomy $original_taxonomy */
+                /** @var ?EtsyTaxonomy $original_taxonomy */
                 $original_taxonomy = EtsyTaxonomy::where('etsy_taxonomy_id', $result['taxonomy_id'])->first();
                 $taxonomy = $original_taxonomy;
 
@@ -343,6 +343,7 @@ class Shop extends SluggedModel
                     } while ($taxonomy !== null);
 
                     $parent = null;
+                    /** @var ShopCategory $category */
                     foreach (array_reverse($hierarchy) as $category) {
                         $category->parent_id = $parent?->id;
                         $category->save();
@@ -371,7 +372,9 @@ class Shop extends SluggedModel
             }
 
             $item->save();
-            $item->addToIndex();
+            if (method_exists($item, 'addToIndex')) {
+                $item->addToIndex();
+            }
 
             $counter++;
             $new_or_updated_ids[] = $item->id;

@@ -11,15 +11,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @package Etsy\Models
  *
- * @property int      $id
- * @property int      $shop_id
- * @property int      $shop_item_id
- * @property Carbon   $date
- * @property int      $views
- * @property int      $website_clicks
+ * @property int         $id
+ * @property int         $shop_id
+ * @property int         $shop_item_id
+ * @property Carbon      $date
+ * @property int         $views
+ * @property int         $website_clicks
  *
- * @property Shop     $shop
- * @property ShopItem $item
+ * @property-read string $month - from DB aggregate queries
+ *
+ * @property Shop        $shop
+ * @property ShopItem    $item
  */
 class ShopItemStats extends Model
 {

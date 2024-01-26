@@ -30,8 +30,9 @@ class EtsyServiceProvider extends ServiceProvider
                 $migrations => database_path('migrations'),
                 $config     => config_path('etsy.php'),
             ]);
+        /** @phpstan-ignore-next-line */
         } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('etsy');
+            $this->app->configure('etsy'); /** @phpstan-ignore-line */
         }
 
         $this->mergeConfigFrom($config, 'etsy');

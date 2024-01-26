@@ -21,8 +21,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int          $weight
  * @property Carbon       $added_at
  *
- * @property Wishlist     wishlist
- * @property ShopItem     entity
+ * @property Wishlist     $wishlist
+ * @property ShopItem     $entity
  */
 class WishlistItem extends MorphPivot
 {

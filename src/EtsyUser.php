@@ -14,9 +14,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @package Etsy
  *
- * @property Collection|Shop[]     favoriteShops
- * @property Collection|ShopItem[] favoriteShopItems
- * @property Collection|Wishlist[] wishlists
+ * @property Collection<Shop>     $favoriteShops
+ * @property Collection<ShopItem> $favoriteShopItems
+ * @property Collection<Wishlist> $wishlists
  */
 trait EtsyUser
 {

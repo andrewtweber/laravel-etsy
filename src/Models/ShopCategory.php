@@ -75,8 +75,6 @@ class ShopCategory extends SluggedModel
     }
 
     /**
-     * @param string|null $icon
-     *
      * @return string|null
      */
     public function getIconDuotoneAttribute(): ?string
