@@ -36,11 +36,11 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "andrewtweber/laravel-snaccs": "dev-master",
         "andrewtweber/proste-sdk": "dev-master",
         "andrewtweber/slimak": "dev-master",
-        "laravel/framework": "^8.12|^9.0|^10.0",
+        "laravel/framework": "^8.12|^9.0|^10.0|^11.0",
         "nesbot/carbon": "^2.60"
     },
     "require-dev": {
