@@ -1,5 +1,5 @@
 {
-    "name": "andrewtweber/laravel-etsy",
+    "name": "iammikek/laravel-etsy",
     "type": "library",
     "description": "Etsy marketplace for Laravel",
     "keywords": [
@@ -12,6 +12,10 @@
         {
             "name": "Andrew Weber",
             "homepage": "https://andrew.cool"
+        },
+          {
+            "name": "Mike Karthauser",
+            "homepage": "https://automica.io"
         }
     ],
     "repositories": [
