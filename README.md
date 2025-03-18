@@ -59,7 +59,9 @@ protected function schedule(Schedule $schedule)
     $schedule->command('etsy:shops')->dailyAt('06:00');
 }
 
-### For Laravel 12, to register the commands, add to the `boot` method within `AppServiceProvider`
+### For Laravel 12: 
+
+To register the commands, add to the `boot` method within `AppServiceProvider`
 
 ```
     /**
