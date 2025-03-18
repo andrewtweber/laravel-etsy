@@ -58,12 +58,13 @@ protected function schedule(Schedule $schedule)
     // Recommend running this daily to sync shops and items
     $schedule->command('etsy:shops')->dailyAt('06:00');
 }
+```
 
 ### For Laravel 12: 
 
 To register the commands, add to the `boot` method within `AppServiceProvider`
 
-```
+```php
     /**
      * Bootstrap any application services.
      */
