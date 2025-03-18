@@ -62,23 +62,16 @@ protected function schedule(Schedule $schedule)
 
 ### For Laravel 12: 
 
-To register the commands, add to the `boot` method within `AppServiceProvider`
+To register the commands, add to `Application::configure` in `bootstrap/app.php` 
 
 ```php
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        Artisan::starting(function ($artisan) {
-            $artisan->resolveCommands([
-                \Etsy\Console\Commands\EtsyTaxonomies::class,
-                \Etsy\Console\Commands\EtsyUpdateListings::class,
-            ]);
-        });
-    }
-    ```
 
+return Application::configure(basePath: dirname(__DIR__))
+    ->withCommands([
+        Etsy\Console\Commands\EtsyTaxonomies::class,
+        Etsy\Console\Commands\EtsyUpdateListings::class,
+    ])
+```
 
 ```
 
