@@ -41,7 +41,7 @@
         "andrewtweber/proste-sdk": "dev-master",
         "andrewtweber/slimak": "dev-master",
         "laravel/framework": "^8.12|^9.0|^10.0|^11.0|^12.0",
-        "nesbot/carbon": "^2.60"
+        "nesbot/carbon": "^2.60|^3.0"
     },
     "require-dev": {
         "larastan/larastan": "^1.0",
