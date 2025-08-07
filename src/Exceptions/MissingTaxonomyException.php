@@ -12,9 +12,9 @@ use Throwable;
  */
 class MissingTaxonomyException extends RuntimeException
 {
-    public function __construct(string $message = null, int $code = 0, ?Throwable $previous = null)
+    public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
     {
-        if ($message === null) {
+        if ($message === "") {
             $message = 'Please run `artisan etsy:taxonomy` to sync new taxonomies.';
         }
 
