@@ -65,14 +65,11 @@ protected function schedule(Schedule $schedule)
 To register the commands, add to `Application::configure` in `bootstrap/app.php` 
 
 ```php
-
 return Application::configure(basePath: dirname(__DIR__))
     ->withCommands([
         Etsy\Console\Commands\EtsyTaxonomies::class,
         Etsy\Console\Commands\EtsyUpdateListings::class,
     ])
-```
-
 ```
 
 ## Taxonomy
