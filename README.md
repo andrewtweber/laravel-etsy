@@ -60,6 +60,18 @@ protected function schedule(Schedule $schedule)
 }
 ```
 
+### For Laravel 12: 
+
+To register the commands, add to `Application::configure` in `bootstrap/app.php` 
+
+```php
+return Application::configure(basePath: dirname(__DIR__))
+    ->withCommands([
+        Etsy\Console\Commands\EtsyTaxonomies::class,
+        Etsy\Console\Commands\EtsyUpdateListings::class,
+    ])
+```
+
 ## Taxonomy
 
 This command probably only needs to be run once, or very rarely:
