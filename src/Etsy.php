@@ -241,7 +241,7 @@ class Etsy extends SDK
     {
         return [
             'headers' => [
-                'x-api-key' => $this->key,
+                'x-api-key' => $this->key . ':' . $this->secret,
             ],
         ];
     }
