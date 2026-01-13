@@ -129,7 +129,7 @@ class Shop extends SluggedModel
     public function primaryCategory(): ?ShopCategory
     {
         if (! $this->items->count()) {
-            return $this->categories[0] ?? null;
+            return $this->categories[0] ?? null; // @phpstan-ignore return.type
         }
 
         $primaryGroup = $this->items
@@ -139,7 +139,7 @@ class Shop extends SluggedModel
             })
             ->first();
 
-        return $primaryGroup[0]->category;
+        return $primaryGroup[0]?->category;
     }
 
     /**

@@ -116,6 +116,6 @@ class ShopCategory extends SluggedModel
 
         // Sort by name, ignoring articles like "a" or "the"
         $this->shops = $this->shops->merge($shops)
-            ->sortBy(fn(Shop $shop) => strtolower(strip_articles($shop->name)));
+            ->sortBy(fn(Shop $shop) => strtolower(strip_articles($shop->name))); // @phpstan-ignore argument.type
     }
 }

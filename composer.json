@@ -40,13 +40,13 @@
         "andrewtweber/laravel-snaccs": "dev-master",
         "andrewtweber/proste-sdk": "dev-master",
         "andrewtweber/slimak": "dev-master",
-        "laravel/framework": "^8.12|^9.0|^10.0|^11.0|^12.0",
-        "nesbot/carbon": "^2.60|^3"
+        "laravel/framework": "^11.0|^12.0",
+        "nesbot/carbon": "^2.60|^3.0"
     },
     "require-dev": {
-        "larastan/larastan": "^1.0",
-        "orchestra/testbench": "^6.17",
-        "phpunit/phpunit": "^9"
+        "larastan/larastan": "^2.0",
+        "orchestra/testbench": "^9.0",
+        "phpunit/phpunit": "^11"
     },
     "config": {
         "sort-packages": true
