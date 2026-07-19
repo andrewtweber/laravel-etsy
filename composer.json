@@ -44,8 +44,8 @@
         "nesbot/carbon": "^2.60|^3.0"
     },
     "require-dev": {
-        "larastan/larastan": "^2.0",
-        "orchestra/testbench": "^9.0",
+        "larastan/larastan": "^3.6",
+        "orchestra/testbench": "^10.4",
         "phpunit/phpunit": "^11"
     },
     "config": {
